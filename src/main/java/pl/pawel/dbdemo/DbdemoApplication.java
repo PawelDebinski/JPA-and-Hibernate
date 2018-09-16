@@ -25,5 +25,6 @@ public class DbdemoApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Course course = repository.findById(10001L);
         logger.info("Course 10001 -> {}", course.toString());
+        repository.save(new Course("Micorservices in 100 steps"));
     }
 }
