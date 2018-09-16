@@ -43,4 +43,6 @@ public class CourseRepositoryTest {
         Course updatedCourse = repository.findById(10001L);
         assertEquals("JPA in 50 steps - Updated", updatedCourse.getName());
     }
+
+
 }
