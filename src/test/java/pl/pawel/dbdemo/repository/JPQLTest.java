@@ -44,9 +44,9 @@ public class JPQLTest {
 
     @Test
     public void jpql_where() {
-        TypedQuery<Course> query = em.createQuery("Select c from Course c where name like '%100 Steps%'", Course.class);
+        TypedQuery<Course> query = em.createQuery("Select c from Course c where name like '%50 Steps'", Course.class);
         List<Course> resultList = query.getResultList();
-        logger.info("Select c from Course c where name like '%100 Steps%'-----> {}", resultList);
+        logger.info("Select c from Course c where name like '%50 Steps'-----> {}", resultList);
     }
 
 
