@@ -23,7 +23,8 @@ public class DbdemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Course course = repository.findByid(10001L);
+        Course course = repository.findById(10001L);
         logger.info("Course 10001 -> {}", course.toString());
+        repository.deleteById(10001L);
     }
 }

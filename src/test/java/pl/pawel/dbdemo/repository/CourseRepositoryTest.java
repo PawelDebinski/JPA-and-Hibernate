@@ -21,7 +21,7 @@ public class CourseRepositoryTest {
 
     @Test
     public void findByid_basic() {
-        Course course = repository.findByid(10001L);
+        Course course = repository.findById(10001L);
         assertEquals("JPA in 50 Steps", course.getName());
     }
 }
