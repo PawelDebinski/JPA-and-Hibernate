@@ -8,12 +8,16 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.pawel.dbdemo.entity.Course;
 import pl.pawel.dbdemo.repository.CourseRepository;
+import pl.pawel.dbdemo.repository.StudentRepository;
 
 @SpringBootApplication
 public class DbdemoApplication implements CommandLineRunner {
 
     @Autowired
-    private CourseRepository repository;
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private StudentRepository studentRepository;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -23,9 +27,6 @@ public class DbdemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Course course = repository.findById(10001L);
-//        logger.info("Course 10001 -> {}", course.toString());
-//        repository.save(new Course("Micorservices in 100 steps"));
-//        repository.playWithEntityManager();
+        studentRepository.saveStudentWithPassport();
     }
 }
