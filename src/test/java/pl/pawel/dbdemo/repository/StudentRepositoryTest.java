@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.pawel.dbdemo.entity.Course;
+import pl.pawel.dbdemo.entity.Passport;
 import pl.pawel.dbdemo.entity.Student;
 
 import javax.persistence.EntityManager;
@@ -29,9 +30,33 @@ public class StudentRepositoryTest {
     @Autowired
     EntityManager em;
 
+    // Session & Session Factory
+    // EntityManager % Persistence Context
+    // Transaction
+
     @Test
     @Transactional
-    public void retriveveStudentAndPassportDetails() {
+    public void someTest() {
+        // Database Operation 1 - Retrieve student
+        Student student = em.find(Student.class, 20001L);
+        // Persistence Context (student)
+
+        // Database Operation 2 - Retrieve passport
+        Passport passport = student.getPassport();
+        // Persistence Context (student, passport)
+
+        // Database Operation 3 - update passport
+        passport.setNumber("E123457");
+        // Persistence Context (student, passport++)
+
+        // Database Operation 4 - update student
+        student.setName("Ranga - updated");
+        // Persistence Context (student++, passport++)
+    }
+
+    @Test
+    @Transactional
+    public void retrieveStudentAndPassportDetails() {
         Student student = em.find(Student.class, 20001L);
         logger.info("student -> {}", student);
         logger.info("passport -> {}", student.getPassport());
