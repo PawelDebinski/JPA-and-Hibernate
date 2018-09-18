@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import pl.pawel.dbdemo.entity.Course;
+import pl.pawel.dbdemo.entity.Review;
 
 import javax.persistence.EntityManager;
+import java.util.List;
 
 
 @Repository
@@ -40,4 +42,14 @@ public class CourseRepository {
     }
 
 
+    public void addReviewsForCourse(Long courseId, List<Review> reviews) {
+        Course course = findById(courseId);
+        logger.info("course.getReviews() --> {}", course.getReviews());
+
+        for (Review review : reviews) {
+            course.addReview(review);
+            review.setCourse(course);
+            em.persist(review);
+        }
+    }
 }

@@ -18,7 +18,7 @@ public class Review {
 
     protected Review() {}
 
-    public Review(String description, String rating) {
+    public Review(String rating, String description) {
         this.description = description;
         this.rating = rating;
     }
