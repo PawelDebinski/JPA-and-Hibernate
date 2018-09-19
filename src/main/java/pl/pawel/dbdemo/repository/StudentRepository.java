@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import pl.pawel.dbdemo.entity.Course;
 import pl.pawel.dbdemo.entity.Passport;
 import pl.pawel.dbdemo.entity.Student;
 
@@ -48,5 +49,13 @@ public class StudentRepository {
 
         student.setPassport(passport);
         em.persist(student);
+    }
+
+    public void insertStudentAndCourse(Student student, Course course) {
+        student.addCourse(course);
+        course.addStudent(student);
+
+        em.persist(student);
+        em.persist(course);
     }
 }
