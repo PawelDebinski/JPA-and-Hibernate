@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.pawel.dbdemo.entity.Course;
+import pl.pawel.dbdemo.entity.Student;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -72,5 +73,19 @@ public class JPQLTest {
 
         logger.info("Results -> {}", resultList);
     }
+
+    @Test
+    public void jpql_students_with_passports_in_a_certain_pattern() {
+        TypedQuery<Student> query = em.createQuery("Select s from Student s where s.passport.number like '%1234%'", Student.class);
+        List<Student> resultList = query.getResultList();
+
+        logger.info("Results -> {}", resultList);
+    }
+
+    // like
+    // BETWEEN 100 AND 1000
+    // IS NULL
+    // upper, lower, trim, length
+
 
 }
