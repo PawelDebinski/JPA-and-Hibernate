@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import pl.pawel.dbdemo.entity.Course;
-import pl.pawel.dbdemo.entity.Employee;
-import pl.pawel.dbdemo.entity.Review;
+import pl.pawel.dbdemo.entity.*;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -27,8 +25,12 @@ public class EmployeeRepository {
         em.persist(employee);
     }
 
-    public List<Employee> retrieveAllEmployees() {
-        return em.createQuery("select e from Employee e", Employee.class).getResultList();
+    public List<PartTimeEmployee> retrieveAllPartTimeEmployees() {
+        return em.createQuery("select e from PartTimeEmployee e", PartTimeEmployee.class).getResultList();
+    }
+
+    public List<FullTimeEmployee> retrieveAllFullTimeEmployees() {
+        return em.createQuery("select e from FullTimeEmployee e", FullTimeEmployee.class).getResultList();
     }
 
 }

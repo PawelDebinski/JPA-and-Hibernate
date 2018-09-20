@@ -44,6 +44,7 @@ public class DbdemoApplication implements CommandLineRunner {
 //        studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
         employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
         employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
-        logger.info("All Employees ---> {}", employeeRepository.retrieveAllEmployees());
+        logger.info("All Full Time Employees ---> {}", employeeRepository.retrieveAllFullTimeEmployees());
+        logger.info("All Part Time Employees ---> {}", employeeRepository.retrieveAllPartTimeEmployees());
     }
 }
