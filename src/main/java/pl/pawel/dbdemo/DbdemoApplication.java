@@ -6,12 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import pl.pawel.dbdemo.entity.Course;
-import pl.pawel.dbdemo.entity.Review;
-import pl.pawel.dbdemo.entity.Student;
+import pl.pawel.dbdemo.entity.*;
 import pl.pawel.dbdemo.repository.CourseRepository;
+import pl.pawel.dbdemo.repository.EmployeeRepository;
 import pl.pawel.dbdemo.repository.StudentRepository;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +23,9 @@ public class DbdemoApplication implements CommandLineRunner {
 
     @Autowired
     private StudentRepository studentRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -38,6 +41,9 @@ public class DbdemoApplication implements CommandLineRunner {
 //        reviews.add(new Review("5", "Hatsoff."));
 //        courseRepository.addReviewsForCourse(10003L, reviews);
 
-        studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+//        studentRepository.insertStudentAndCourse(new Student("Jack"), new Course("Microservices in 100 Steps"));
+        employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
+        employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+        logger.info("All Employees ---> {}", employeeRepository.retrieveAllEmployees());
     }
 }
