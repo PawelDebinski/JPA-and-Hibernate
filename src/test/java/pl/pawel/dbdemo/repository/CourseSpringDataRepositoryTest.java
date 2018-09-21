@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import pl.pawel.dbdemo.entity.Course;
@@ -44,6 +45,14 @@ public class CourseSpringDataRepositoryTest {
         repository.save(course);
 
         logger.info("Courses -> {} ", repository.findAll());
+        logger.info("Count -> {} ", repository.count());
+    }
+
+    @Test
+    public void sort() {
+        Sort sort = new Sort(Sort.Direction.DESC, "name");
+        logger.info("Sorted Courses -> {} ", repository.findAll(sort));
+
         logger.info("Count -> {} ", repository.count());
     }
 
