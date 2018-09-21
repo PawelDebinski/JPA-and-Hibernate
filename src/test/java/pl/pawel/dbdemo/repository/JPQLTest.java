@@ -87,5 +87,41 @@ public class JPQLTest {
     // IS NULL
     // upper, lower, trim, length
 
+    // JOIN -> Select c, s from Course c JOIN c.students s ===> this will omit courses without students
+    // LEFT JOIN -> Select c, s from Course c LEFT JOIN c.students s ===> this will select all courses, even without students
+    // CROSS JOIN -> Select c, s from Course c, Student s ===> it combines all courses with all students
+
+    @Test
+    public void join() {
+        Query query = em.createQuery("Select c, s from Course c JOIN c.students s");
+        List<Object[]> resultList = query.getResultList();
+
+        logger.info("Results size -> {}", resultList.size());
+        for (Object[] result:resultList) {
+            logger.info("Course -> {} Student -> {}", result[0], result[1]);
+        }
+    }
+
+    @Test
+    public void left_join() {
+        Query query = em.createQuery("Select c, s from Course c LEFT JOIN c.students s");
+        List<Object[]> resultList = query.getResultList();
+
+        logger.info("Results size -> {}", resultList.size());
+        for (Object[] result:resultList) {
+            logger.info("Course -> {} Student -> {}", result[0], result[1]);
+        }
+    }
+
+    @Test
+    public void cross_join() {
+        Query query = em.createQuery("Select c, s from Course c, Student s");
+        List<Object[]> resultList = query.getResultList();
+
+        logger.info("Results size -> {}", resultList.size());
+        for (Object[] result:resultList) {
+            logger.info("Course -> {} Student -> {}", result[0], result[1]);
+        }
+    }
 
 }
