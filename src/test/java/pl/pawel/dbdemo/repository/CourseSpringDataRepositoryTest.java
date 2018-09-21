@@ -68,6 +68,13 @@ public class CourseSpringDataRepositoryTest {
         Pageable secondPageable = firstPage.nextPageable();
         Page<Course> secondPage = repository.findAll(secondPageable);
         logger.info("Second Page -> {} ", secondPage.getContent());
+    }
+
+    @Test
+    public void findUsingName() {
+        logger.info("FindByName -> {} ", repository.findByName("JPA in 50 Steps"));
+        logger.info("CountByName -> {} ", repository.countByName("JPA in 50 Steps"));
+        logger.info("nativeQuery -> {} ", repository.courseWith50StepsInNameUsingNativeQuery());
 
     }
 
