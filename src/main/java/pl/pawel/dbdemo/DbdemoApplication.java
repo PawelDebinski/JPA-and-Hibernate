@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.pawel.dbdemo.entity.*;
 import pl.pawel.dbdemo.repository.CourseRepository;
+import pl.pawel.dbdemo.repository.CourseSpringDataRepository;
 import pl.pawel.dbdemo.repository.EmployeeRepository;
 import pl.pawel.dbdemo.repository.StudentRepository;
 
